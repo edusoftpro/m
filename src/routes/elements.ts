@@ -15,6 +15,20 @@ async function getElement(req, res, next) {
     next();
 }
 
+async function getElementsBy(req, res, next) {
+    let elements = null;
+    try {
+        elements = await Elemnt.find(req.query);
+        if (elements === null) {
+            return res.status(404).json({ message: 'Cannot find such elements' });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+    res.elements = elements;
+    next();
+}
+
 router.get('/', async (_, res) => {
     try {
         const elements = await Elemnt.find();
@@ -22,6 +36,10 @@ router.get('/', async (_, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+})
+
+router.get('/by', getElementsBy, async (_, res) => {
+    res.send(res.elements);
 })
 
 router.get('/:id', getElement, (_, res) => {
@@ -44,18 +62,20 @@ router.route('/').post(async (req, res) => {
 })
 
 router.patch('/:id', getElement, async (req, res) => {
-    if (req.body.atomicNumber !== null) {
+    /* eslint-disable eqeqeq */
+    if (req.body.atomicNumber != null) {
         res.element.atomicNumber = req.body.atomicNumber;
     }
-    if (req.body.atomicMass !== null) {
+    if (req.body.atomicMass != null) {
         res.element.atomicMass = req.body.atomicMass;
     }
-    if (req.body.symbol !== null) {
+    if (req.body.symbol != null) {
         res.element.symbol = req.body.symbol;
     }
-    if (req.body.name !== null) {
+    if (req.body.name != null) {
         res.element.name = req.body.name;
     }
+    /* eslint-enable eqeqeq */
     try {
         const updatedElement = await res.element.save();
         res.status(201).json(`${updatedElement}`);
@@ -64,9 +84,18 @@ router.patch('/:id', getElement, async (req, res) => {
     }
 })
 
+router.delete('/by', getElementsBy, async (req, res) => {
+    try {
+        await Elemnt.find(req.query).deleteMany();
+        res.json({ message: 'Elements have just been removed successfully' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+})
+
 router.delete('/:id', getElement, async (_, res) => {
     try {
-        await res.element.remove();
+        await res.element.deleteOne();
         res.json({ message: 'Element has been just removed successfully' });
     } catch (err) {
         res.status(500).json({ message: err.message });

@@ -2,15 +2,23 @@ GET http://localhost:8000/elements
 
 ###
 
-GET http://localhost:8000/elements/5e5db14ffa68512de898fa14
+GET http://localhost:8000/elements/5e5e448b1c997d028833371d
 
 ###
 
-DELETE http://localhost:8000/elements/5e5db14ffa68512de898fa14
+GET http://localhost:8000/elements/by?name=Hydrogen
 
 ###
 
-PATCH http://localhost:8000/elements/5e5db4d7b794262d640b364f
+GET http://localhost:8000/elements/by?atomicNumber=1&atomicMass=1.00794
+
+###
+
+GET http://localhost:8000/elements/by?atomicMass=6.941&atomicMass=1.00794
+
+###
+
+PATCH http://localhost:8000/elements/5e5db551b794262d640b3650
 Content-Type: application/json
 
 {
@@ -22,12 +30,24 @@ Content-Type: application/json
 
 ###
 
+DELETE http://localhost:8000/elements/by?atomicNumber=2
+
+###
+
+DELETE http://localhost:8000/elements/by?name=Hydrogen
+
+###
+
+DELETE http://localhost:8000/elements/5e5e448b1c997d028833371d
+
+###
+
 POST http://localhost:8000/elements
 Content-Type: application/json
 
 {
     "atomicNumber": 1,
-    "atomicMass": 1.00794,
+    "atomicMass": 1.0079,
     "symbol": "H",
     "name": "Hydrogen"
 }

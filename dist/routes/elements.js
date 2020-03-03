@@ -26,6 +26,22 @@ function getElement(req, res, next) {
         next();
     });
 }
+function getElementsBy(req, res, next) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let elements = null;
+        try {
+            elements = yield Elemnt.find(req.query);
+            if (elements === null) {
+                return res.status(404).json({ message: 'Cannot find such elements' });
+            }
+        }
+        catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+        res.elements = elements;
+        next();
+    });
+}
 router.get('/', (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const elements = yield Elemnt.find();
@@ -34,6 +50,9 @@ router.get('/', (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     catch (err) {
         res.status(500).json({ message: err.message });
     }
+}));
+router.get('/by', getElementsBy, (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send(res.elements);
 }));
 router.get('/:id', getElement, (_, res) => {
     res.send(res.element);
@@ -54,18 +73,20 @@ router.route('/').post((req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 }));
 router.patch('/:id', getElement, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    if (req.body.atomicNumber !== null) {
+    /* eslint-disable eqeqeq */
+    if (req.body.atomicNumber != null) {
         res.element.atomicNumber = req.body.atomicNumber;
     }
-    if (req.body.atomicMass !== null) {
+    if (req.body.atomicMass != null) {
         res.element.atomicMass = req.body.atomicMass;
     }
-    if (req.body.symbol !== null) {
+    if (req.body.symbol != null) {
         res.element.symbol = req.body.symbol;
     }
-    if (req.body.name !== null) {
+    if (req.body.name != null) {
         res.element.name = req.body.name;
     }
+    /* eslint-enable eqeqeq */
     try {
         const updatedElement = yield res.element.save();
         res.status(201).json(`${updatedElement}`);
@@ -74,9 +95,18 @@ router.patch('/:id', getElement, (req, res) => __awaiter(void 0, void 0, void 0,
         res.status(400).json({ message: err.message });
     }
 }));
+router.delete('/by', getElementsBy, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield Elemnt.find(req.query).deleteMany();
+        res.json({ message: 'Elements have just been removed successfully' });
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}));
 router.delete('/:id', getElement, (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield res.element.remove();
+        yield res.element.deleteOne();
         res.json({ message: 'Element has been just removed successfully' });
     }
     catch (err) {
