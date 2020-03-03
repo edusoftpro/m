@@ -1,0 +1,14 @@
+{
+    "version": "0.1",
+    "words": [
+        "mongose",
+        "Element",
+        "Elemnt"
+    ],
+    "flagWords": [
+        "hte"
+    ],
+    "ignorePaths": [
+        "**/node_modules/**"
+    ]
+}

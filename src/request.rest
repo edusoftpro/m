@@ -1,0 +1,60 @@
+GET http://localhost:8000/elements
+
+###
+
+GET http://localhost:8000/elements/5e5db14ffa68512de898fa14
+
+###
+
+DELETE http://localhost:8000/elements/5e5db14ffa68512de898fa14
+
+###
+
+PATCH http://localhost:8000/elements/5e5db4d7b794262d640b364f
+Content-Type: application/json
+
+{
+    "atomicNumber": 1,
+    "atomicMass": 1.0079,
+    "symbol": "H",
+    "name": "Hydrogen"
+}
+
+###
+
+POST http://localhost:8000/elements
+Content-Type: application/json
+
+{
+    "atomicNumber": 1,
+    "atomicMass": 1.00794,
+    "symbol": "H",
+    "name": "Hydrogen"
+}
+
+
+###
+
+POST http://localhost:8000/elements
+Content-Type: application/json
+
+{
+    "atomicNumber": 2,
+    "atomicMass": 4.0026,
+    "symbol": "He",
+    "name": "Helium"
+}
+
+###
+
+POST http://localhost:8000/elements
+Content-Type: application/json
+
+{
+    "atomicNumber": 3,
+    "atomicMass": 6.941,
+    "symbol": "Li",
+    "name": "Lithium"
+}
+
+###
