@@ -23,7 +23,7 @@
         "no-constant-condition": 2,
         "no-debugger": 2,
         "no-duplicate-imports": 2,
-        "no-eq-null": 2,
+        "no-eq-null": 0,
         "no-irregular-whitespace": 2,
         "no-magic-numbers": 0,
         "no-undef": 2,
