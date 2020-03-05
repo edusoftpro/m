@@ -84,19 +84,19 @@ router.patch('/:id', getElement, async (req, res) => {
     }
 })
 
-router.delete('/by', getElementsBy, async (req, res) => {
+router.delete('/by', async (req, res) => {
     try {
         await Elemnt.find(req.query).deleteMany();
-        res.json({ message: 'Elements have just been removed successfully' });
+        res.json('All elements which match the query have been removed successfully');
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 })
 
-router.delete('/:id', getElement, async (_, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        await res.element.deleteOne();
-        res.json({ message: 'Element has been just removed successfully' });
+        await Elemnt.findById(req.params.id).deleteOne();
+        res.json('Element with matched id has been just removed successfully');
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

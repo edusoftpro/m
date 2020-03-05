@@ -64,6 +64,51 @@ exports.resolvers = {
             catch (err) {
                 throw Error(`Error: ${err}`);
             }
+        }),
+        updElement: (_, { id, atomicNumber, atomicMass, symbol, name }) => __awaiter(void 0, void 0, void 0, function* () {
+            try {
+                const element = yield axios.patch(`http://localhost:8000/elements/${id}`, {
+                    atomicNumber: atomicNumber,
+                    atomicMass: atomicMass,
+                    symbol: symbol,
+                    name: name
+                }, {
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                return element.data;
+            }
+            catch (err) {
+                throw Error(`Error: ${err}`);
+            }
+        }),
+        delElement: (_, { id }) => __awaiter(void 0, void 0, void 0, function* () {
+            try {
+                const element = yield axios.delete(`http://localhost:8000/elements/${id}`, _, {
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                return element.data;
+            }
+            catch (err) {
+                throw Error(`Error: ${err}`);
+            }
+        }),
+        delElementBy: (_, { atomicNumber, atomicMass, symbol, name }) => __awaiter(void 0, void 0, void 0, function* () {
+            try {
+                const element = yield axios.delete(`http://localhost:8000/elements/by`, {
+                    params: {
+                        atomicNumber: atomicNumber,
+                        atomicMass: atomicMass,
+                        symbol: symbol,
+                        name: name
+                    }
+                }, {
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                return element.data;
+            }
+            catch (err) {
+                throw Error(`Error: ${err}`);
+            }
         })
     }
 };

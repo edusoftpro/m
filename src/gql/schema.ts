@@ -9,6 +9,9 @@ export const typeDefs = gql`
   }
   type Mutation {
     addElement(atomicNumber: Int!, atomicMass: Float!, symbol: String!, name: String! ): Element
+    updElement(id: String!, atomicNumber: Int, atomicMass: Float, symbol: String, name: String ): Element
+    delElement(id: String! ): String
+    delElementBy(atomicNumber: Int, atomicMass: Float, symbol: String, name: String ): String
   }
   type Element {
     _id: String!

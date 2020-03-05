@@ -38,7 +38,7 @@ DELETE http://localhost:8000/elements/by?name=Lithium
 
 ###
 
-DELETE http://localhost:8000/elements/5e604662c025d134608bb25d
+DELETE http://localhost:8000/elements/5e60c8051853743188a23ad9
 
 ###
 
@@ -47,7 +47,7 @@ Content-Type: application/json
 
 {
     "atomicNumber": 1,
-    "atomicMass": 1.007,
+    "atomicMass": 1.00789,
     "symbol": "H",
     "name": "Hydrogen"
 }

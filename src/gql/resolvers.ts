@@ -52,6 +52,54 @@ export const resolvers = {
             } catch (err) {
                 throw Error(`Error: ${err}`);
             }
+        },
+        updElement: async (_, { id, atomicNumber, atomicMass, symbol, name }) => {
+            try {
+                const element = await axios.patch(`http://localhost:8000/elements/${id}`,
+                    {
+                        atomicNumber: atomicNumber,
+                        atomicMass: atomicMass,
+                        symbol: symbol,
+                        name: name
+                    },
+                    {
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                return element.data;
+            } catch (err) {
+                throw Error(`Error: ${err}`);
+            }
+        },
+        delElement: async (_, { id }) => {
+            try {
+                const element = await axios.delete(`http://localhost:8000/elements/${id}`,
+                    _,
+                    {
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                return element.data;
+            } catch (err) {
+                throw Error(`Error: ${err}`);
+            }
+        },
+        delElementBy: async (_, { atomicNumber, atomicMass, symbol, name }) => {
+            try {
+                const element = await axios.delete(`http://localhost:8000/elements/by`,
+                    {
+                        params: {
+                            atomicNumber: atomicNumber,
+                            atomicMass: atomicMass,
+                            symbol: symbol,
+                            name: name
+                        }
+                    },
+                    {
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                return element.data;
+            } catch (err) {
+                throw Error(`Error: ${err}`);
+            }
         }
     }
 };

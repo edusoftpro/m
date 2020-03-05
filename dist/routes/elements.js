@@ -95,19 +95,19 @@ router.patch('/:id', getElement, (req, res) => __awaiter(void 0, void 0, void 0,
         res.status(400).json({ message: err.message });
     }
 }));
-router.delete('/by', getElementsBy, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete('/by', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield Elemnt.find(req.query).deleteMany();
-        res.json({ message: 'Elements have just been removed successfully' });
+        res.json('All elements which match the query have been removed successfully');
     }
     catch (err) {
         res.status(500).json({ message: err.message });
     }
 }));
-router.delete('/:id', getElement, (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield res.element.deleteOne();
-        res.json({ message: 'Element has been just removed successfully' });
+        yield Elemnt.findById(req.params.id).deleteOne();
+        res.json('Element with matched id has been just removed successfully');
     }
     catch (err) {
         res.status(500).json({ message: err.message });
