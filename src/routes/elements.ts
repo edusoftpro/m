@@ -55,7 +55,7 @@ router.route('/').post(async (req, res) => {
     });
     try {
         const newElement = await element.save();
-        res.status(201).json(`${newElement}`);
+        res.status(201).json(newElement);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -78,7 +78,7 @@ router.patch('/:id', getElement, async (req, res) => {
     /* eslint-enable eqeqeq */
     try {
         const updatedElement = await res.element.save();
-        res.status(201).json(`${updatedElement}`);
+        res.status(201).json(updatedElement);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }

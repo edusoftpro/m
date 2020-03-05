@@ -4,7 +4,7 @@
   "description": "Simple implementation of periodic table using REST",
   "main": "server.ts",
   "scripts": {
-    "build": "npm run clean && tsc --p .",
+    "build": "npm run clean && tsc --p . && npm run spell:check",
     "clean": "rimraf ./dist/*",
     "debug": "npm run build && npm run watch-debug",
     "dev": "npm run build && cls && nodemon ./dist/server.js",
@@ -30,11 +30,18 @@
   },
   "homepage": "https://github.com/edusoftpro/micro#readme",
   "dependencies": {
+    "apollo-server-express": "^2.11.0",
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
     "moment": "^2.24.0",
-    "mongoose": "^5.9.2"
+    "mongoose": "^5.9.2",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.1"
   },
   "devDependencies": {
     "@types/async": "^3.0.2",
