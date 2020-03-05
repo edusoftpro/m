@@ -30,6 +30,7 @@ hs_err_pid*
 
 # Misc
 node_modules
+gui
 tests
 features/*
 *.txt
