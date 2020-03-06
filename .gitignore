@@ -28,10 +28,14 @@
 # Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+# CucumberStudio
+features/*
+reports/*
+hiptest-publisher.conf
+
 # Misc
 node_modules
 gui
+scripts
 tests
-features/*
 *.txt
-.env
