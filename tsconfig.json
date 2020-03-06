@@ -20,9 +20,11 @@
         }
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "features/step_definitions"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/tests/**"
     ]
 }
