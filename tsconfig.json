@@ -21,7 +21,7 @@
     },
     "include": [
         "src/**/*",
-        "features/step_definitions"
+        "./features/**/*"
     ],
     "exclude": [
         "node_modules",
