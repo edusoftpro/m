@@ -40,15 +40,15 @@
   },
   "homepage": "https://github.com/edusoftpro/micro#readme",
   "dependencies": {
-    "apollo-server-express": "^2.11.0",
-    "axios": "^0.19.2",
+    "apollo-server-express": "^2.25.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
-    "mongoose": "^5.9.2",
-    "serve": "^11.3.0"
+    "mongoose": "^5.12.14",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -70,23 +70,23 @@
     "comment-json": "^3.0.2",
     "cspell": "^4.0.53",
     "cucumber": "^6.0.5",
-    "cucumber-pretty": "^6.0.0",
     "cucumber-html-reporter": "^5.1.0",
+    "cucumber-pretty": "^6.0.0",
     "eslint": "^6.4.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "qs": "^6.9.1",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.3",
-    "ts-node-dev": "^1.0.0-pre.44",
+    "ts-node-dev": "^1.1.6",
     "typescript": "^3.8.2"
   },
   "optionalDependencies": {
-    "fsevents": "^2.1.2"
+    "fsevents": "^2.3.2"
   }
 }
