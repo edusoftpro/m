@@ -17,6 +17,7 @@ db.once('open', () => console.log('Connected to DB'));
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const app = express();
+app.disable("x-powered-by");
 server.applyMiddleware({ app });
 
 app.use(express.json());
