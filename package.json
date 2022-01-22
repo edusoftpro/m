@@ -78,7 +78,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "mpath": "^0.8.4",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.1",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
     "qs": "^6.9.1",
