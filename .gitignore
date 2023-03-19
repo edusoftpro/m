@@ -39,3 +39,6 @@ gui
 scripts
 tests
 *.txt
+
+# Sonar
+.scannerwork/
